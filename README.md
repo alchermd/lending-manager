@@ -3,7 +3,7 @@
 <img align="center" src="http://static.wixstatic.com/media/3b2cd8_a1d22c90a1aa49d0a3f3064e8eed22f8~mv2.jpg">
 </p>
 
-<div align="center">A *Python based* application used for managing lending accounts.</div>
+<div align="center">A <i>Python based</i> application used for managing lending accounts.</div>
 
 ## Usage
 

@@ -21,7 +21,7 @@ class Account:
         ''' Prints the account information. '''
         print("Account: {}".format(self.name))
         print("Opened: {}".format(self.start_date))
-        print("Statement: {} for {}% interest rate weekly.".format(self.og_amount, self.int_rate))
+        print("Statement: {} for {}% weekly interest.".format(self.og_amount, self.int_rate * 100))
         print("Interest: {}".format(self.interest))
         print("Current balance: {}".format(self.balance))
 

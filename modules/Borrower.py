@@ -24,11 +24,13 @@ class Borrower:
         if index is None:
             for account in self.accounts:
                 print("-" * 10)
+                print("ID: {}".format(self.accounts.index(account)))
                 account.show_info()
         elif not self.accounts:
             print("No accounts opened")
         else:
             print("-" * 10)
+            print("ID: {}".format(self.accounts.index(self.accounts[-1])))
             self.accounts[index].show_info()
 
     def pay(self, index, amount):

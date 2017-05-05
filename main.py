@@ -2,26 +2,10 @@
 ''' Main program '''
 
 import os
-import time
 from datetime import date
 from modules.Borrower import Borrower
+from modules.helpers import clear_delay, press_enter
 
-def clear_delay(secs):
-    ''' Delays execution of the program and then clears the screen afterwards. '''
-    time.sleep(secs)
-    os.system("clear")
-
-def press_enter(msg="Press enter to continue"):
-    ''' Delays execution of the program and then clears the screen when enter is pressed.
-        An optional msg can be passed as an argument to customize the output.
-        The keyboard input is returned.
-    '''
-    print("-" * 10)
-    print(msg, end='')
-    output = input()
-    os.system("clear")
-
-    return output
 
 def main():
     ''' The main function that allows the user to interact with the rest of the program. '''
@@ -119,7 +103,7 @@ def main():
                 acc_id = int(press_enter("Enter account id to pay: "))
 
                 # Validate acc_id
-                if acc_id < 0 or acc_id > len(database[name].accounts):
+                if acc_id < 0 or acc_id >= len(database[name].accounts):
                     print("Invalid account id")
                     clear_delay(2)
 

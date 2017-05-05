@@ -11,6 +11,12 @@ def clear_delay(secs):
     time.sleep(secs)
     os.system("clear")
 
+def press_enter():
+    ''' Delays execution of the program and then clears the screen when enter is pressed. '''
+    print("-" * 10)
+    print("Press enter to continue", end='')
+    input()
+    os.system("clear")
 
 def main():
     ''' The main function that allows the user to interact with the rest of the program. '''
@@ -71,10 +77,28 @@ def main():
                 database[name].open_account(amt, date.today(), 5)
                 print("Account created! Summary: ")
                 database[name].show_credits(-1)
-                clear_delay(5)
+                press_enter()
 
             else:
                 continue
+
+        # Check accounts.
+        elif choice == '1':
+            # Check if the user has no existing accounts.
+            if not database[name].accounts:
+                print("You have no accounts under your name.")
+                clear_delay(2)
+
+            else:
+                print("Enter account id (leave blank to show all acounts): ", end='')
+                acc_id = input()
+
+                if acc_id == "":
+                    database[name].show_credits()
+                else:
+                    database[name].show_credits(int(acc_id))
+
+                press_enter()
 
     print("Thank you for using our services. See you soon!")
 

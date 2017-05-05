@@ -7,7 +7,18 @@
 
 ## Usage
 
-**TODO: Add usage instructions**
+You can either run `main.py` in the Python environment:
+
+```
+$ python3.5 main.py
+```
+
+or save some future keystrokes and make the script executable:
+
+```
+$ sudo chmod +x ./main.py
+$ ./main.py
+```
 
 ## License
 

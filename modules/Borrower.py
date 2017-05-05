@@ -16,17 +16,19 @@ class Borrower:
         else:
             print("Bad credit status")
 
-    def show_credits(self, index=-1):
+    def show_credits(self, index=None):
         ''' Shows the account information of the given index.
             Shows an error message if no accounts are opened.
             Shows all the accounts otherwise.
         '''
-        if index < 0:
+        if index is None:
             for account in self.accounts:
+                print("-" * 10)
                 account.show_info()
         elif not self.accounts:
             print("No accounts opened")
         else:
+            print("-" * 10)
             self.accounts[index].show_info()
 
     def pay(self, index, amount):

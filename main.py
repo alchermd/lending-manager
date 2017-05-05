@@ -11,12 +11,17 @@ def clear_delay(secs):
     time.sleep(secs)
     os.system("clear")
 
-def press_enter():
-    ''' Delays execution of the program and then clears the screen when enter is pressed. '''
+def press_enter(msg="Press enter to continue"):
+    ''' Delays execution of the program and then clears the screen when enter is pressed.
+        An optional msg can be passed as an argument to customize the output.
+        The keyboard input is returned.
+    '''
     print("-" * 10)
-    print("Press enter to continue", end='')
-    input()
+    print(msg, end='')
+    output = input()
     os.system("clear")
+
+    return output
 
 def main():
     ''' The main function that allows the user to interact with the rest of the program. '''
@@ -99,6 +104,36 @@ def main():
                     database[name].show_credits(int(acc_id))
 
                 press_enter()
+
+        # Pay account(s)
+        elif choice == '2':
+            # Check if the user has no existing accounts.
+            if not database[name].accounts:
+                print("You have no accounts under your name.")
+                clear_delay(2)
+
+            else:
+                print("Here are your accounts:")
+                database[name].show_credits()
+
+                acc_id = int(press_enter("Enter account id to pay: "))
+
+                # Validate acc_id
+                if acc_id < 0 or acc_id > len(database[name].accounts):
+                    print("Invalid account id")
+                    clear_delay(2)
+
+                else:
+                    # Make payment
+                    print("Enter amount to pay: ", end='')
+                    amt = int(input())
+                    database[name].pay(acc_id, amt)
+                    clear_delay(2)
+
+                    # Show feedback
+                    print("Payment succeeded!")
+                    database[name].show_credits(acc_id)
+                    press_enter()
 
     print("Thank you for using our services. See you soon!")
 

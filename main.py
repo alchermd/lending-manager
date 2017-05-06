@@ -93,10 +93,15 @@ def main():
 
             else:
                 print("Enter account id (leave blank to show all acounts): ", end='')
-                acc_id = input()
+                acc_id = int(input())
 
+                # Validate acc_id
                 if acc_id == "":
                     database[name].show_credits()
+                elif acc_id < 0 or acc_id >= len(database[name].accounts):
+                    print("Invalid account id")
+                    clear_delay(2)
+                    continue
                 else:
                     database[name].show_credits(int(acc_id))
 
@@ -119,6 +124,7 @@ def main():
                 if acc_id < 0 or acc_id >= len(database[name].accounts):
                     print("Invalid account id")
                     clear_delay(2)
+                    continue
 
                 else:
                     # Make payment

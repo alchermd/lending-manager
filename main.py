@@ -2,6 +2,7 @@
 ''' Main program '''
 
 import os
+import sys
 from datetime import date
 from modules.Borrower import Borrower
 from modules.helpers import clear_delay, press_enter
@@ -27,13 +28,18 @@ def main():
     name = input()
     clear_delay(1)
 
-    if customer_is_new:
+    # Name validation.
+    if customer_is_new and name not in database:
         database[name] = Borrower(name)
-        print("You are now registered to our services, {}".format(name))
+        print("You are now registered to our services, {}.".format(name))
         clear_delay(2)
-    else:
+    elif not customer_is_new and name in database:
         print("Welcome back, {}".format(name))
         clear_delay(1)
+    else:
+        print("Cannot access account.")
+        clear_delay(1)
+        sys.exit()
 
     # Interface loop.
     choice = None

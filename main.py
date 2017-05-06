@@ -59,8 +59,15 @@ def main():
             # Prompt for amount.
             print("How much will you borrow?")
             print("Amount: ", end='')
-            amt = int(input())
+            amt = input()
             clear_delay(1)
+
+            # Validate amount.
+            if not amt.isdigit():
+                print("Invalid value.")
+                clear_delay(2)
+                continue
+            amt = float(amt)
 
             # Ask for a confirmation.
             print("A 5% interest rate will be applied weekly on this account.")
